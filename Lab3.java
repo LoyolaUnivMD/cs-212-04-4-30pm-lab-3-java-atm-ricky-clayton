@@ -1,67 +1,100 @@
-// Programmers:  [your names here]
-// Course:  CS 212
-// Due Date:
-// Lab Assignment:
-// Problem Statement:
-// Data In:
+// Programmers: Ricky Johnson, Clayton Powell
+// Course: CS 212
+// Due Date: 2/11/24
+// Lab Assignment: 3
+// Problem Statement: Develop a program that acts at a smart ATM
+// Data In: name
 // Data Out:
 // Credits: [Is your code based on an example in the book, in class, or something else?
 //            Reminder: you should never take code from the Internet or another person
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.text.NumberFormat;
 
 class Lab3 {
 
-// METHODS 
-    // Deposite
-    public double deposit(double currentBalance, double depositValue){
+    // METHODS
+    // Deposit
+    public static double deposit(double currentBalance, double depositValue){
         currentBalance = currentBalance + depositValue;
         return currentBalance;
     }
 
-    // Widthdraw
-    public double widthdraw(double currentBalance, double widthdrawValue){
-        currentBalance = currentBalance - widthdrawValue;
+    // withdraw
+    public static double withdraw(double currentBalance, double withdrawValue){
+        currentBalance = currentBalance - withdrawValue;
         return currentBalance;
-        
+
     }
 
     // Leave
-    public boolean leave(){
-        boolean finished = false;
-        return finished;
-        
+    public static boolean leave(){
+        boolean proceed = false;
+        return proceed;
+
     }
 
 
     // Main method
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to Lab 3");
+        DecimalFormat currency = new DecimalFormat("$#,##0.00");
+
+        System.out.println();
+        System.out.println("Lab 3");
+        System.out.println("Welcome to the ATM.");
+        System.out.println();
 
         double currentBalance = 212.90;
-        boolean finished = true;
+        boolean proceed = true;
 
 
         System.out.println("What is your name?: ");
         String userName = scanner.next();
 
-        System.out.println("Welcome, " + userName + " what would you like to do today?");
-        System.out.println("Deposite, widthdraw, check balance, or leave?: ");
-        String selection = scanner.next();
 
-        if (selection == "withdraw") {
-            System.out.println("Enter deposite amount: ");
-            double depositValue = scanner.nextDouble();
-            depositValue.deposit(depositValue);
+        while (proceed){
+            System.out.println();
+            System.out.println("Welcome, " + userName + ". What would you like to do today?");
+            System.out.println("Deposit (d), withdraw (w), check balance (c), or leave (l)?: ");
+            String selection = scanner.next();
+            String selectionLower = selection.toLowerCase();
+
+            if (selectionLower.equals("d")) {
+                System.out.println("\nEnter deposit amount: ");
+                double depositValue = scanner.nextDouble();
+                currentBalance = deposit(currentBalance, depositValue);
+                System.out.println("\nYour new balance is: " + currency.format(currentBalance));
+                System.out.println();
+                System.out.println("---------------------------------------------------------------------------------");
+            }
+
+            else if (selectionLower.equals("w")) {
+                System.out.println("\nEnter withdraw amount: ");
+                double withdrawValue = scanner.nextDouble();
+                currentBalance = withdraw(currentBalance, withdrawValue);
+                System.out.println("\nYour new balance is: " + currency.format(currentBalance));
+                System.out.println();
+                System.out.println("---------------------------------------------------------------------------------");
+            }
+
+            else if (selectionLower.equals("c")) {
+                System.out.println("\nYour current balance is: " + currency.format(currentBalance));
+                System.out.println();
+                System.out.println("---------------------------------------------------------------------------------");
+            }
+
+            else if (selectionLower.equals("l")){
+                proceed = leave();
+                System.out.println("\nThank you for using our ATM. Have a great day, " + userName + ".");
+            }
+
+            else{
+                System.out.println("Please enter a valid option.\n");
+            }
         }
-        
-
-
-        System.out.println("Enter widthdraw amount: ");
-        double widthdrawValue = scanner.nextDouble();
 
         scanner.close();
     }
 }
-//fdgegf
