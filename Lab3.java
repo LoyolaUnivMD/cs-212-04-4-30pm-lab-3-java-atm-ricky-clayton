@@ -3,10 +3,9 @@
 // Due Date: 2/11/24
 // Lab Assignment: 3
 // Problem Statement: Develop a program that acts at a smart ATM
-// Data In: name
-// Data Out:
-// Credits: [Is your code based on an example in the book, in class, or something else?
-//            Reminder: you should never take code from the Internet or another person
+// Data In: name, depositValue, withdrawValue, deposit, withdraw, checkBalance, leave, receipt type
+// Data Out: currentBalance, totalDeposit, totalWithdraw
+// Credits: Class Notes 3
 
 
 // Imports
@@ -62,6 +61,7 @@ class Lab3 {
 
         // Assign value for total amount withdrawn (printed when user selects "leave")
         double totalWithdraw = 0;
+
 
         // Ask user for their name
         System.out.println("What is your name?: ");
