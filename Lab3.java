@@ -73,13 +73,13 @@ class Lab3 {
 
 
         // ATM Menu (controlled by while loop)
-        while (proceed){    // While the user wants to proceed
+        while (proceed){    // While the user wants to proceed/doesn't select leave
 
             // Ask user to Deposit, Withdraw, Check Balance, or Leave
             System.out.println("Deposit (d), Withdraw (w), Check Balance (c), or Leave (l)?: ");
             String selection = scanner.next();
 
-            // Modify selection input to be lower case
+            // Modify selection input to be lowercase
             String selectionLower = selection.toLowerCase();
 
 
@@ -152,7 +152,7 @@ class Lab3 {
                 System.out.println("\nWould you like your receipt printed (p) or emailed (e)?");
                 String receipt = scanner.next();
 
-                // Modify receipt input to be lower case
+                // Modify receipt input to be lowercase
                 String receiptLower = receipt.toLowerCase();
                 System.out.println();   // Spacing
 
@@ -163,7 +163,7 @@ class Lab3 {
                     System.out.println("Invalid selection. Select p or e.");
                     receipt = scanner.next();
 
-                    // Modify receipt input to be lower case
+                    // Modify receipt input to be lowercase
                     receiptLower = receipt.toLowerCase();
 
                     System.out.println();   // Spacing
@@ -200,7 +200,7 @@ class Lab3 {
 
             // Error check for invalid menu input
             else{
-                System.out.println("Please enter a valid option (d, w, c, or l).\n");
+                System.out.println("Please enter a valid option.\n");
             }
 
         }   // End of ATM menu

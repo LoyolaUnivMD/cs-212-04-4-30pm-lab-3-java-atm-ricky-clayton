@@ -1,1 +1,78 @@
+Algorithm:
+import Scanner class
+import DecimalFormat class
 
+create scanner object
+create decimal format object
+
+introduce program
+Assign value for user's current balance as 212.90 (double)
+Assign value for proceed as true (used for while loop to control ATM menu) (boolean)
+Assign value for total amount deposited as 0 (printed when user selects "leave") (double)
+Assign value for total amount withdrawn as 0 (printed when user selects "leave") (double)
+
+Ask user for their name (string)
+Welcome user to the ATM
+
+while proceed = true
+    Ask user to Deposit, Withdraw, Check Balance, or Leave (string)
+    Modify selection input to be lower case
+
+    if user selects deposit
+        ask user for deposit amount (double)
+        while deposit value <= 0
+            inform the user to enter a value greater than 0
+            ask for deposit amount again
+        call deposit method with arguments current balance and deposit value to update the amount in account
+        update total amount deposited by adding to it the deposit value
+        print new balance after deposit
+
+    else if user selects withdraw
+        ask user for withdraw amount (double)
+        while withdraw value <= 0 (check for negative or $0.00 withdraw)
+            inform user to deposit at least $0.01
+            ask for withdraw value again
+        while withdraw value > current balance (check for overdraw)
+            inform user of insufficient funds
+            ask for withdraw amount again
+        call withdraw method with arguments current balance and withdraw value to update amount in account
+        print new balance after withdraw
+
+    else if user selects check balance
+        print current balance
+
+    else if user selects leave
+        ask user if they want a printed or emailed receipt (string)
+        modify receipt type input to be lower case
+        while user does not enter "p" and "e" for receipt type input
+            inform user of invalid selection
+            ask for receipt input again
+            modify receipt input to be lowercase
+        if user selects a printed receipt
+            print "Remember to take your receipt."
+        else if user selects an emailed receipt
+            print "Your receipt will be emailed to the email address associated with your account."
+        print total amount withdrawn
+        print total amount deposited
+        print thank you message
+        assign proceed as leave method to end while loop and end program
+    else
+        ask user to input a valid menu option
+
+
+Methods:
+
+name: deposit
+purpose: update current balance after a deposit
+parameters: current balance (double), deposit value (double)
+return: current balance
+
+name: withdraw
+purpose: update current balance after a withdraw
+parameters: current balance (double), withdraw value (double)
+return: current balance
+
+name: leave
+purpose: assign proceed as false to end while loop that controls ATM menu
+parameters: none
+return: proceed
